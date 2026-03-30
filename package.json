@@ -1,0 +1,21 @@
+{
+  "name": "telegram-welcome-bot-ts",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/bot.js",
+  "scripts": {
+    "dev": "tsx watch src/bot.ts",
+    "build": "tsc",
+    "start": "node dist/bot.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "grammy": "^1.38.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "nodemon": "^3.1.10",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  }
+}

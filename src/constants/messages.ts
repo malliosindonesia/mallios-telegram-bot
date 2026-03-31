@@ -1,20 +1,30 @@
 export const messages = {
-  start: `Halo! 👋
-Saya adalah bot Telegram untuk welcome message dan bantuan AI.
+  start: `Welcome aboard. 
+I am the Mallios Telegram bot, built to power futuristic community onboarding and AI-assisted support.
 
-Perintah yang tersedia:
+Available commands:
 - /start
 - /help`,
 
-  help: `Menu bantuan:
-- Bot akan menyapa member baru di grup
-- Bot bisa membalas command dasar
-- Bot bisa dihubungkan ke AI`,
+  help: `Command center:
+- The bot welcomes new members with a crypto-style onboarding message
+- The bot handles basic commands
+- The bot can route advanced prompts to AI`,
 
-  groupWelcome: (name: string): string => `Halo, ${name}! 👋
-Selamat datang di Mallios.
+  welcomeGifUrl:
+    "https://media.giphy.com/media/xTiTnxpQ3ghPiB2Hp6/giphy.gif",
 
-Silakan perkenalkan diri yaa.
-Pastikan baca rules grup terlebih dahulu.
-Semoga betah dan selamat bergabung 🚀`,
-};  
+  groupWelcome: (name: string): string => `Welcome to the next frontier, ${name}.
+
+Mallios is where innovation, precision, and future-ready health technology converge.
+You have just entered a high-signal ecosystem built for bold ideas, smart execution, and long-term impact.
+
+Sync with the network, explore the links below, and lock into the mission.
+Stay sharp, stay curious, and enjoy the ride.`,
+
+  pendingLink:
+    "This portal is ready, but the direct link has not been connected yet.",
+
+  verifyPending:
+    "Verification is not active yet for this bot.",
+};

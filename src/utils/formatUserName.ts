@@ -1,14 +1,11 @@
-export function formatUserName(
-  firstName?: string,
-  username?: string,
-): string {
-  if (firstName?.trim()) {
-    return firstName.trim();
-  }
+import type { User } from "grammy/types";
 
-  if (username?.trim()) {
-    return `@${username.trim()}`;
+export function formatUserName(user?: User): string {
+  if (!user) return "Teman";
+  if (user.first_name && user.last_name) {
+    return `${user.first_name} ${user.last_name}`;
   }
-
-  return "teman";
+  if (user.first_name) return user.first_name;
+  if (user.username) return `@${user.username}`;
+  return "Teman";
 }

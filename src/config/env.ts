@@ -2,17 +2,24 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-function getEnv(name: string): string {
-  const value = process.env[name];
+export const env = {
+  botToken: process.env.BOT_TOKEN || "",
+  botUsername: process.env.BOT_USERNAME || "",
+  openclawApiUrl: process.env.OPENCLAW_API_URL || "",
+  openclawApiKey: process.env.OPENCLAW_API_KEY || "",
+};
 
-  if (!value) {
-    throw new Error(`Missing required environment variable: ${name}`);
-  }
-
-  return value;
+if (!env.botToken) {
+  throw new Error("BOT_TOKEN belum diisi di file .env");
 }
 
-export const env = {
-  BOT_TOKEN: getEnv("BOT_TOKEN"),
-  OPENCLAW_API_KEY: getEnv("OPENCLAW_API_KEY"),
-};
+const telegramTokenPattern = /^\d+:[A-Za-z0-9_-]{20,}$/;
+
+if (
+  env.botToken === "REDACTED_ROTATE_THIS" ||
+  !telegramTokenPattern.test(env.botToken)
+) {
+  throw new Error(
+    "BOT_TOKEN tidak valid. Isi .env dengan token bot Telegram asli dari BotFather, formatnya mirip 123456789:AA..."
+  );
+}

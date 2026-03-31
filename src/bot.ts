@@ -1,20 +1,21 @@
 import { Bot } from "grammy";
-
 import { env } from "./config/env.js";
-import { registerAiHandler } from "./handlers/aiHandler.js";
-import { registerHelpHandler } from "./handlers/helpHandler.js";
-import { registerStartHandler } from "./handlers/startHandler.js";
-import { registerWelcomeHandler } from "./handlers/welcomeHandler.js";
+import { startHandler } from "./handlers/startHandler.js";
+import { helpHandler } from "./handlers/helpHandler.js";
+import { welcomeHandler } from "./handlers/welcomeHandler.js";
+import { aiHandler } from "./handlers/aiHandler.js";
 
-const bot = new Bot(env.BOT_TOKEN);
+const bot = new Bot(env.botToken);
 
-registerStartHandler(bot);
-registerHelpHandler(bot);
-registerWelcomeHandler(bot);
-registerAiHandler(bot);
+bot.command("start", startHandler);
+bot.command("help", helpHandler);
 
-bot.catch((error) => {
-  console.error("Bot error:", error);
+bot.on("message:new_chat_members", welcomeHandler);
+bot.on("message:text", aiHandler);
+
+bot.catch((err) => {
+  console.error("Bot error:", err);
 });
 
+console.log("Bot sedang berjalan...");
 bot.start();

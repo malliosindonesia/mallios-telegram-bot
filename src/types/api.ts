@@ -1,7 +1,13 @@
-export interface OpenClawRequest {
-  prompt: string;
+export interface OpenClawResponse {
+  reply?: string;
+  message?: string;
 }
 
-export interface OpenClawResponse {
-  result: string;
+export interface OpenClawAgentPayload {
+  text?: string | null;
+  mediaUrl?: string | null;
+}
+
+export interface OpenClawAgentResponse {
+  payloads?: OpenClawAgentPayload[];
 }

@@ -1,7 +1,6 @@
-import type { Bot, Context } from "grammy";
+import type { Context } from "grammy";
+import { messages } from "../constants/messages.js";
 
-import { BOT_MESSAGES } from "../constants/messages.js";
-
-export function registerHelpHandler(bot: Bot<Context>): void {
-  bot.command("help", (ctx) => ctx.reply(BOT_MESSAGES.help));
+export async function helpHandler(ctx: Context): Promise<void> {
+  await ctx.reply(messages.help);
 }
